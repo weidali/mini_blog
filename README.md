@@ -8,3 +8,9 @@
 
 ## instalation
 
+
+## Coding style guidelines
+
+When developing, we follow the guide from the "[Laravel & PHP 'Spatie'][spatie/guidelines]" article.
+
+[spatie/guidelines]: https://spatie.be/guidelines/laravel-php#artisan-commands

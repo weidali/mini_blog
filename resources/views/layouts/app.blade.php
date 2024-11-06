@@ -8,13 +8,13 @@
 
     <title>@yield('title', 'Статейник')</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+	{{-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/"> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"> --}}
 	<link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-	@vite(['resources/js/app.js'])
+	{{-- @vite(['resources/js/app.js']) --}}
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<div class="container py-3">
 		<header>
 		  <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
@@ -24,14 +24,9 @@
 			</a>
 		
 			<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-			  <a class="me-3 py-2 link-secondary " href="#">На главную</a>
-			  <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Каталог статей</a>
+			  <a class="me-3 py-2 {{ Request::is('/') ? 'link-secondary' : 'link-body-emphasis text-decoration-none' }}" href="{{ route('home') }}">На главную</a>
+			  <a class="me-3 py-2 {{ Request::is('articles*') ? 'link-secondary' : 'link-body-emphasis text-decoration-none' }}" href="{{ route('articles.index') }}">Каталог статей</a>
 			</nav>
-		  </div>
-		
-		  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-			<h1 class="display-4 fw-normal text-body-emphasis">Мир абстрактен</h1>
-			<p class="fs-5 text-body-secondary">Успешный Успех</p>
 		  </div>
 		</header>
     	@yield('content')

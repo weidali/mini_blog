@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Services\ImageService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,6 +22,7 @@ class HomeController extends Controller
 
         foreach ($latestArticles as $article) {
             $article->placeholderImage = $this->imageService->getPlaceholderImage(300, 200, $article->title);
+            $article->date = Carbon::parse($article->published_at);
         }
 
         return view('home', compact('latestArticles'));

@@ -1,26 +1,54 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог статей </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1>Каталог статей<span class="mx-2 text-body-secondary text-sm">{{ count($articles) }}</span></h1>
-        <ul class="list-group">
-            @if($articles->isNotEmpty())
-				@foreach($articles as $article)
-					<li class="list-group-item">
-						<a href="{{ route('articles.show', $article->slug) }}">{{ $article->title }}<span class="mx-2 text-body-secondary">{{ $article->slug }}</span></a>
-						<p>{{ \Illuminate\Support\Str::limit($article->content, 100) }}</p>
-					</li>
-				@endforeach
-			@else
-				<li class="list-group-item">Статьи не найдены</li>
-			@endif
-        </ul>
+@extends('layouts.app')
+
+@section('title', 'Каталог статей')
+@section('content')
+
+<div class="container mt-5">
+    <div class="container ">
+        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+        <div class="row">
+          <div class="col-md-8 text-left">
+            <h2>Каталог статей</h2>
+          </div>
+          <div class="col-6 col-md-4 text-right">
+            <p>Количество: <span class="mx-2 text-body-secondary text-sm">{{ count($articles) }}</span></p>
+          </div>
+        </div>
     </div>
-</body>
-</html>
+
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+        @if($articles->isNotEmpty())
+            @foreach($articles as $article)
+
+            <a href="" class="custom-card">
+              <div class="col">
+                <div class="card h-100">
+				  <img src="{{ $article->placeholderImage }}" class="card-img-top" alt="{{ $article->title }}">
+                  <div class="card-body">
+                    <a class="stretched-link" href="{{ route('articles.show', $article->slug) }}"></a>
+
+                    <div class="container p-0">
+                        <div class="row">
+                          <div class="col">
+                              <h5 class="card-title">{{ $article->title }}</h5>
+                          </div>
+                          <div class="col-sm-6">
+                              <p class="mx-2 text-body-secondary fs-6">{{ $article->date->format('d-m-Y') }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    <p class="card-text">{{ \Illuminate\Support\Str::limit($article->content, \App\Models\Article::PREVIEW_LENGTH) }}</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-body-secondary">Опубликовано {{ $article->date->diffForHumans() }}</small>
+                  </div>
+                </div>
+            </div>
+        </a>
+            @endforeach
+        @else
+            <p class="list-group-item">Статьи не найдены</p>
+        @endif
+      </div>
+</div>
+@endsection

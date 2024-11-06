@@ -10,10 +10,18 @@ class Article extends Model
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
     use HasFactory;
 
+    const PREVIEW_LENGTH = 200;
+
     protected $fillable = [
         'title',
         'slug',
         'content',
         'published_at',
+    ];
+
+    protected $dates = [
+        'published_at',
+        'created_at',
+        'updated_at',
     ];
 }

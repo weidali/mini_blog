@@ -39,5 +39,10 @@ When developing, we follow the guide from the "[Laravel & PHP 'Spatie'][spatie/g
 ### Каталог статей
 [![Каталог статей](https://i.postimg.cc/NM1Qj6fB/temp-Image-Kpvf1-G.avif)](https://postimg.cc/Kkv69gMH)
 
+### Статья
+[![Статья](https://i.postimg.cc/q7KT1sKy/temp-Image-XZJ6-Bx.avif)](https://postimg.cc/QBjwtW0d)
+
+### Тег
+[![Тег](https://i.postimg.cc/xCSShXG7/temp-Image-FWXUJg.avif)](https://postimg.cc/xkg7bT4y)
 
 [spatie/guidelines]: https://spatie.be/guidelines/laravel-php#artisan-commands

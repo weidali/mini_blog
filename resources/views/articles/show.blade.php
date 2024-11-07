@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container mt-5">
-	<img src="{{ $article->image }}" class="card-img-top" alt="{{ $article->title }}">
+	<img src="{{ $article->placeholderImage }}" class="card-img-top" alt="{{ $article->title }}">
 	<h1>{{ $article->title }}</h1>
 	@include('components.article-like-view', [
     	'likes' => $article->likes,
@@ -17,7 +17,7 @@
 				<span class="badge rounded-pill text-bg-secondary">{{ $tag->label }}</span></a>
 		@endforeach
 	</div>
-	<div>{!! nl2br(e($article->content)) !!}</div>
+	<div class="my-3">{!! nl2br(e($article->content)) !!}</div>
 	<a href="{{ route('articles.index') }}" class="btn btn-secondary my-2">Назад к каталогу</a>
 </div>
 <script type="text/javascript">

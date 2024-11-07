@@ -2,16 +2,8 @@
 @section('title', $tag->label)
 
 @section('content')
-    <h1>Статьи с тегом: {{ $tag->label }}</h1>
+    <h1>Статьи с тегом: <span class="badge rounded-pill text-bg-secondary">#{{ $tag->label }}</span></h1>
 
-    <ul class="list-group">
-        @forelse ($tag->articles as $article)
-            <li class="list-group-item">
-                <a href="{{ route('articles.show', $article->slug) }}">{{ $article->title }}</a>
-                <p>{{ Str::limit($article->content, 100) }}</p>
-            </li>
-        @empty
-            <p>Нет статей с этим тегом.</p>
-        @endforelse
-    </ul>
+	@include('components.paginated-articles-list', ['articles' => $articles])
+
 @endsection

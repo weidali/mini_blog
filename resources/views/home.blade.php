@@ -9,6 +9,7 @@
 		<p class="fs-5 text-body-secondary">В каждом слове — целая вселенная</p>
 	</div>
 </div>
+@if($latestArticles->isNotEmpty())
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 	@foreach($latestArticles as $article)
 		<div class="col">
@@ -30,5 +31,17 @@
 		</div>
 	@endforeach
 </div>
+
+@else
+<div class="row row-cols-1 row-cols-md-1 g-4">
+	<div class="alert alert-secondary" role="alert">
+		<div class="container h-100 d-flex justify-content-center">
+			<div class="jumbotron my-auto">
+				Статьи скоро появятся
+			</div>
+		</div>
+	</div>
+</div>
+@endif
 
 @endsection

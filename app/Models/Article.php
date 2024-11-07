@@ -24,4 +24,9 @@ class Article extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

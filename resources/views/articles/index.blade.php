@@ -47,7 +47,13 @@
         </a>
             @endforeach
         @else
-            <p class="list-group-item">Статьи не найдены</p>
+        <div class="alert alert-secondary" role="alert">
+          <div class="container h-100 d-flex justify-content-center">
+            <div class="jumbotron my-auto">
+              Статьи скоро появятся
+            </div>
+          </div>
+        </div>
         @endif
 
         <nav aria-label="Page navigation example">

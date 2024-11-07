@@ -18,7 +18,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::orderBy('published_at', 'desc')->paginate(4);
+        $articles = Article::orderBy('published_at', 'desc')->paginate(2);
 
         foreach ($articles as $article) {
             $article->placeholderImage = $this->imageService->getPlaceholderImage(600, 400, $article->title);
@@ -30,7 +30,7 @@ class ArticleController extends Controller
 
     public function show($slug)
     {
-        $article = Article::where('slug', $slug)->firstOrFail();
+        $article = Article::with('tags')->where('slug', $slug)->firstOrFail();
         $article->image = $this->imageService->getPlaceholderImage(600, 400, $article->title);
 
         return view('articles.show', compact('article'));

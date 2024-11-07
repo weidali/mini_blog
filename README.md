@@ -14,13 +14,19 @@ cd education_system
 ```
 
 Install the dependencies
-`composer install --optimize-autoloader --no-dev`
+```bash
+composer install --optimize-autoloader --no-dev
+```
 
 Get into the project root, open `.env` file and update configuration details
-`cp .env.example .env`
+```bash
+cp .env.example .env
+```
 
 Set DB connection credentials and make migrations with seeders
-`php artisan migrate:fresh --seed`
+```bash
+php artisan migrate:fresh --seed
+```
 
 ## Coding style guidelines
 

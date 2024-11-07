@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\ArticleLike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class ArticleLikeController extends Controller
 {
     public function like(Request $request, $articleId)
     {
-        $article = Article::findOrFail($articleId);
         $ip = $request->ip();
         $deviceId = $request->cookie('device_id');
         $deviceId = hash('sha256', $deviceId);
 
-        $existingLike = ArticleLike::where('article_id', $article->id)
+        $existingLike = ArticleLike::where('article_id', $articleId)
             ->where('ip_address', $ip)
             ->where('device_id', $deviceId)
             ->first();
@@ -28,16 +29,20 @@ class ArticleLikeController extends Controller
         }
 
         ArticleLike::create([
-            'article_id' => $article->id,
+            'article_id' => $articleId,
             'ip_address' => $ip,
             'device_id' => $deviceId,
         ]);
 
-        $article->increment('likes');
+        $cacheKey = "article_{$articleId}_likes";
 
-        return response()->json([
-            'success' => true,
-            'likes' => $article->likes
-        ]);
+        if (!Cache::has($cacheKey)) {
+            $currentLikes = DB::table('articles')->where('id', $articleId)->value('likes');
+            Cache::put($cacheKey, $currentLikes, now()->addMinutes(10));
+        }
+
+        $currentLikes = Cache::increment($cacheKey);
+
+        return response()->json(['success' => true, 'likes' => $currentLikes]);
     }
 }

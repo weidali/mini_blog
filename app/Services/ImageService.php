@@ -12,6 +12,6 @@ class ImageService
 	 */
 	public function getPlaceholderImage(int $width = 300, int $height = 200, string $text = 'Placeholder')
 	{
-		return "https://via.placeholder.com/{$width}x{$height}?text=" . urlencode($text);
+		return "https://placehold.co/{$width}x{$height}?text=" . urlencode($text);
 	}
 }

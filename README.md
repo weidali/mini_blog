@@ -32,4 +32,12 @@ php artisan migrate:fresh --seed
 
 When developing, we follow the guide from the "[Laravel & PHP 'Spatie'][spatie/guidelines]" article.
 
+## Previews
+### Главная страница
+[![Главная страница](https://i.postimg.cc/kg9KJsJX/temp-Image-Mflrv-R.avif)](https://postimg.cc/RNsNGcJj)
+
+### Каталог статей
+[![Каталог статей](https://i.postimg.cc/NM1Qj6fB/temp-Image-Kpvf1-G.avif)](https://postimg.cc/Kkv69gMH)
+
+
 [spatie/guidelines]: https://spatie.be/guidelines/laravel-php#artisan-commands

@@ -6,10 +6,9 @@
 		</a>
 	</div>
 	<div class="col-md-6 my-3">
-		<a id="like-button" data-article-id="{{ $article->id }}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-0-hover" href="#">
-			♥ <span class="post__like-count js-like-count px-2">{{ $likes }}</span>
+		<a id="like-button" data-article-id="{{ $article->id }}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-0-hover" href="">
+			♥ <span class="post__like-count js-like-count px-2">{{ Cache::get("article_{$article->id}_likes", $likes) }}</span>
 		</a>
 	</div>
-	
 	</div>
 <div>

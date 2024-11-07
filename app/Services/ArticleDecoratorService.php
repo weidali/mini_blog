@@ -22,7 +22,7 @@ class ArticleDecoratorService
 	 * @param int $height
 	 * @return Article
 	 */
-	public function decorate(Article $article, int $width = 600, int $height = 400): Article
+	public function decorate(Article $article, int $width = 700, int $height = 400): Article
 	{
 		$article->placeholderImage = $this->imageService->getPlaceholderImage($width, $height, $article->title);
 		$article->date = Carbon::parse($article->published_at)->format('d-m-Y');
@@ -39,7 +39,7 @@ class ArticleDecoratorService
 	 * @param int $height
 	 * @return \Illuminate\Support\Collection
 	 */
-	public function decorateCollection($articles, int $width = 600, int $height = 400)
+	public function decorateCollection($articles, int $width = 700, int $height = 400)
 	{
 		return $articles->map(function ($article) use ($width, $height) {
 			return $this->decorate($article, $width, $height);

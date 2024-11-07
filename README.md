@@ -8,6 +8,19 @@
 
 ## instalation
 
+```bash
+git clone git@github.com:weidali/mini_blog.git
+cd education_system
+```
+
+Install the dependencies
+`composer install --optimize-autoloader --no-dev`
+
+Get into the project root, open `.env` file and update configuration details
+`cp .env.example .env`
+
+Set DB connection credentials and make migrations with seeders
+`php artisan migrate:fresh --seed`
 
 ## Coding style guidelines
 

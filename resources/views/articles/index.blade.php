@@ -49,6 +49,12 @@
         @else
             <p class="list-group-item">Статьи не найдены</p>
         @endif
-      </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-start">
+                {{ $articles->links('pagination::bootstrap-5') }}
+            </ul>
+        </nav>
+    </div>
 </div>
 @endsection

@@ -18,7 +18,8 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('published_at', 'desc')->paginate(4);
+
         foreach ($articles as $article) {
             $article->placeholderImage = $this->imageService->getPlaceholderImage(600, 400, $article->title);
             $article->date = Carbon::parse($article->published_at);

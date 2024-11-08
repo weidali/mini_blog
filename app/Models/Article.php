@@ -16,6 +16,8 @@ class Article extends Model
         'title',
         'slug',
         'content',
+        'likes',
+        'views',
         'published_at',
     ];
 

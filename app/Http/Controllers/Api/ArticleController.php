@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleLike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-class ArticleLikeController extends Controller
+class ArticleController extends Controller
 {
     public function like(Request $request, $articleId)
     {
@@ -44,5 +45,15 @@ class ArticleLikeController extends Controller
         $currentLikes = Cache::increment($cacheKey);
 
         return response()->json(['success' => true, 'likes' => $currentLikes]);
+    }
+
+    public function incrementViews($id)
+    {
+        $article = Article::findOrFail($id);
+        $article->increment('views');
+
+        Cache::put("article_{$article->id}_views", $article->views, now()->addMinutes(10)); // Кешируем на 10 минут
+
+        return response()->json(['views' => $article->views]);
     }
 }

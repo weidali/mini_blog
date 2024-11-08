@@ -8,7 +8,7 @@
 	<h1>{{ $article->title }}</h1>
 	@include('components.article-like-view', [
     	'likes' => $article->likes,
-    	'views' => $article->likes,
+    	'views' => $article->views,
     ])
 
 	<div class="tags">
@@ -20,6 +20,20 @@
 	<div class="my-3">{!! nl2br(e($article->content)) !!}</div>
 	<a href="{{ route('articles.index') }}" class="btn btn-secondary my-2">Назад к каталогу</a>
 </div>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+		// console.log('DOMContentLoaded');
+        setTimeout(function () {
+            const articleId = {{ $article->id }};
+			const route = `/api/articles/${articleId}/increment-views`;
+            fetch(route)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('js-view-count').textContent = data.views;
+                });
+        }, 5000);
+    });
+</script>
 <script type="text/javascript">
 	document.getElementById('like-button').addEventListener('click', function() {
 		const articleId = this.getAttribute('data-article-id');

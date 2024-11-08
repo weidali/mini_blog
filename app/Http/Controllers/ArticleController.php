@@ -7,6 +7,7 @@ use App\Services\ArticleDecoratorService;
 use App\Services\ImageService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ArticleController extends Controller
 {
@@ -31,6 +32,14 @@ class ArticleController extends Controller
         $article = Article::with('tags')->where('slug', $slug)->firstOrFail();
         $article = $this->articleDecorator->decorate($article);
 
-        return view('articles.show', compact('article'));
+        $cachedViews = Cache::get("article_{$article->id}_views");
+        if ($cachedViews === null) {
+            $cachedViews = $article->views;
+        }
+
+        return view('articles.show', [
+            'article' => $article,
+            'views' => $cachedViews,
+        ]);
     }
 }

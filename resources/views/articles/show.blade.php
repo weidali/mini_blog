@@ -19,10 +19,20 @@
 	</div>
 	<div class="my-3">{!! nl2br(e($article->content)) !!}</div>
 	<a href="{{ route('articles.index') }}" class="btn btn-secondary my-2">Назад к каталогу</a>
+	<hr>
+	<div class="form my-2">
+		@include('components.comment-form', [
+			'articleId' => $article->id
+		])
+	</div>
+	<div class="comments">
+		@include('components.comments', [
+			'comments' => $article->comments
+		])
+	</div>
 </div>
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
-		// console.log('DOMContentLoaded');
         setTimeout(function () {
             const articleId = {{ $article->id }};
 			const route = `/api/articles/${articleId}/increment-views`;

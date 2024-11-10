@@ -197,16 +197,16 @@ When developing, we follow the guide from the "[Laravel & PHP 'Spatie'][spatie/g
 
 ## Previews
 ### Главная страница
-[![Главная страница|200x150](https://i.postimg.cc/kg9KJsJX/temp-Image-Mflrv-R.avif)](https://postimg.cc/RNsNGcJj)
+[![Главная страница|200x150](https://i.postimg.cc/QNfVwD1J/temp-Image-Zi0y-MM.avif)](https://postimg.cc/Hj7p8fSr){ width=20% }
 
 ### Каталог статей
-[![Каталог статей|200x150](https://i.postimg.cc/NM1Qj6fB/temp-Image-Kpvf1-G.avif)](https://postimg.cc/Kkv69gMH)
+[![Каталог статей|200x150](https://i.postimg.cc/7Z265TcK/temp-Imagewunym-A.avif)](https://postimg.cc/0z9x3r9S){ width=20% }
 
 ### Статья
-[![Статья|200x150](https://i.postimg.cc/q7KT1sKy/temp-Image-XZJ6-Bx.avif)](https://postimg.cc/QBjwtW0d)
+[![Статья|200x150](https://i.postimg.cc/VN9kRPzM/temp-Imagewj2-Dx-O.avif)](https://postimg.cc/Z9RmbgBK){ width=20% }
 
 ### Тег
-[![Тег|200x150](https://i.postimg.cc/xCSShXG7/temp-Image-FWXUJg.avif)](https://postimg.cc/xkg7bT4y)
+[![Тег|200x150](https://i.postimg.cc/BQ8ZzKqJ/temp-Image1y-Id-Ga.avif)](https://postimg.cc/WhvPFtFy){ width=20% }
 
 
 [spatie/guidelines]: https://spatie.be/guidelines/laravel-php#artisan-commands

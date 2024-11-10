@@ -39,7 +39,6 @@ php artisan migrate:fresh --seed
 - Handle high-volume traffic on counters; asynchronous comment processing.
 
 ## Routes
-------------------------------------------------------------------------------------------
 #### WEb
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>Home Page</code></summary>
@@ -127,6 +126,7 @@ php artisan migrate:fresh --seed
 >  curl -X GET -H "Content-Type: text/html" http://localhost:8889/tags/{url}
 > ```
 </details>
+
 ------------------------------------------------------------------------------------------
 #### Api
 <details>

@@ -30,12 +30,13 @@ php artisan migrate:fresh --seed
 ## Features
 - Project Purpose: Build a small, production-ready article website using Laravel
 - Pages and Functionalities:
-  - Home Page (/): Navigation, 6 recent articles.
+  - Home Page (/): Navigation, 6 recent articles and most popular article vitget.
   - Article Catalog (/articles): Navigation, paginated list (10 per page).
   - Article Page (/articles/{slug}): Cover image, content, tags, like/view counters and comment form.
 - Key Components:
   - Counters: Likes and views (AJAX-based, scalable to high traffic).
   - Comment Form: AJAX submission, confirmation message on success.
+  - Most Popular Article: AJAX request to find most popular article by views, likes and comments.
 - Handle high-volume traffic on counters; asynchronous comment processing.
 
 ## Routes

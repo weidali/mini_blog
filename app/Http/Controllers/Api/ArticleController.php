@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleLike;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class ArticleController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Вы уже поставили лайк с этого устройства.'
-            ], 400);
+            ], Response::HTTP_BAD_REQUEST);
         }
 
         ArticleLike::create([
@@ -55,5 +56,24 @@ class ArticleController extends Controller
         Cache::put("article_{$article->id}_views", $article->views, now()->addMinutes(10));
 
         return response()->json(['views' => $article->views]);
+    }
+
+    public function getMostPopularArticle()
+    {
+        $popularArticles = Article::query()
+            ->withCount('comments')
+            ->orderByDesc('views')
+            ->orderByDesc('likes')
+            ->orderByDesc('comments_count')
+            ->take(2)
+            ->get();
+
+        if (!$popularArticles) {
+            return response()->json([
+                'message' => 'No articles found',
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json($popularArticles);
     }
 }

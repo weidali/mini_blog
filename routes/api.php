@@ -12,3 +12,4 @@ Route::get('/user', function (Request $request) {
 Route::post('articles/{articleId}/like', [ArticleController::class, 'like'])->name('articles.like');
 Route::get('/articles/{id}/increment-views', [ArticleController::class, 'incrementViews']);
 Route::post('/articles/{id}/comments', [CommentController::class, 'store']);
+Route::get('/articles/most-popular', [ArticleController::class, 'getMostPopularArticle']);

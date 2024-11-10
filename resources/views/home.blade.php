@@ -58,5 +58,8 @@
 	@endif
 </div>
 </section>
+<section>
+	@include('components.most-popular-article')
+</section>
 
 @endsection

@@ -181,8 +181,9 @@ php artisan migrate:fresh --seed
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
 > | `200`         | `application/json`                | `{"code":"400","views":"<COUNT>"}`                                  |
-> | `404`         | `application/json`                | `{"code":"400","message":"Article Not Found"}`                      |
-> | `422`         | `application/json`                | `{"code":"422","message":"Validation Exceptions"}`                      |
+> | `404`         | `application/json`                | `{"code":"404","message":"Article Not Found"}`                      |
+> | `400`         | `application/json`                | `{"code":"400","success":false,"message":"Вы уже поставили лайк"}`  |
+> | `422`         | `application/json`                | `{"code":"422","success":false,"message":"<Validation Exceptions>"}`|
 
 ##### Example cURL
 > ```bash

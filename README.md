@@ -38,6 +38,158 @@ php artisan migrate:fresh --seed
   - Comment Form: AJAX submission, confirmation message on success.
 - Handle high-volume traffic on counters; asynchronous comment processing.
 
+## Routes
+------------------------------------------------------------------------------------------
+#### WEb
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>Home Page</code></summary>
+
+##### Parameters
+> None
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/html;charset=UTF-8`         | HTML                                                                |
+
+##### Example cURL
+> ```bash
+>  curl -X GET -H "Content-Type: text/html" http://localhost:8889/
+> ```
+</details>
+<details>
+ <summary><code>GET</code> <code><b>/articles</b></code> <code>Articles Page</code></summary>
+
+##### Parameters
+> None
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/html;charset=UTF-8`         | HTML                                                                |
+
+##### Example cURL
+> ```bash
+>  curl -X GET -H "Content-Type: text/html" http://localhost:8889/articles
+> ```
+</details>
+<details>
+ <summary><code>GET</code> <code><b>/articles</b></code> <code>Articles Page</code></summary>
+
+##### Parameters
+> None
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/html;charset=UTF-8`         | HTML                                                                |
+
+##### Example cURL
+> ```bash
+>  curl -X GET -H "Content-Type: text/html" http://localhost:8889/articles
+> ```
+</details>
+<details>
+ <summary><code>GET</code> <code><b>/articles/{slug}</b></code> <code>The Article Page</code></summary>
+
+##### Parameters
+> | name   |  type      | data type      | description                                          |
+> |--------|------------|----------------|------------------------------------------------------|
+> | `slug` |  required  | string         | The specific article titile                          |
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/html;charset=UTF-8`         | HTML                                                                |
+> | `404`         | `text/html;charset=UTF-8`         | HTML                                                                |
+
+##### Example cURL
+> ```bash
+>  curl -X GET -H "Content-Type: text/html" http://localhost:8889/articles/{slug}
+> ```
+</details>
+<details>
+ <summary><code>GET</code> <code><b>/tags/{url}</b></code> <code>The Article Page</code></summary>
+
+##### Parameters
+> | name   |  type      | data type      | description                                          |
+> |--------|------------|----------------|------------------------------------------------------|
+> | `url`  |  required  | string         | The specific tag name                                |
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/html;charset=UTF-8`         | HTML                                                                |
+> | `404`         | `text/html;charset=UTF-8`         | HTML                                                                |
+
+##### Example cURL
+> ```bash
+>  curl -X GET -H "Content-Type: text/html" http://localhost:8889/tags/{url}
+> ```
+</details>
+------------------------------------------------------------------------------------------
+#### Api
+<details>
+ <summary><code>GET</code> <code><b>api/articles/{id}/increment-views</b></code> <code>The article page view counter</code></summary>
+
+##### Parameters
+> | name   |  type      | data type      | description                                          |
+> |--------|------------|----------------|------------------------------------------------------|
+> | `id`   |  required  | string         | SpeThe specific article id                           |
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"code":"200","views":"<COUNT>"}`                                  |
+> | `404`         | `application/json`                | `{"code":"404","message":"Article Not Found"}`                      |
+
+##### Example cURL
+> ```bash
+>  curl -X GET -H "Content-Type: text/html" http://localhost:8889/api/articles/{id}/increment-views
+> ```
+</details>
+<details>
+ <summary><code>POST</code> <code><b>api/articles/{articleId}/like</b></code> <code>Like the article page endpoint</code></summary>
+
+##### Parameters
+> | name        |  type      | data type      | description                                          |
+> |-------------|------------|----------------|------------------------------------------------------|
+> | `articleId` |  required  | int            | The specific article id                              |
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"code":"200","views":"<COUNT>"}`                                  |
+> | `404`         | `application/json`                | `{"code":"404","message":"Article Not Found"}`                      |
+
+##### Example cURL
+> ```bash
+>  curl -X POST -H "Content-Type: application/json" --data @put.json http://localhost:8889/api/articles/{articleId}/like
+> ```
+</details>
+<details>
+ <summary><code>POST</code> <code><b>api/articles/{id}/comments</b></code> <code>Comment the article page endpoint</code></summary>
+
+##### Parameters
+> | name   |  type      | data type      | description                                          |
+> |--------|------------|----------------|------------------------------------------------------|
+> | `id`   |  required  | int            | The specific article id                              |
+> | `title`|  required  | string         | The title of comment                                 |
+> | `body` |  required  | string         | The body of comment                                  |
+
+##### Responses
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"code":"400","views":"<COUNT>"}`                                  |
+> | `404`         | `application/json`                | `{"code":"400","message":"Article Not Found"}`                      |
+> | `422`         | `application/json`                | `{"code":"422","message":"Validation Exceptions"}`                      |
+
+##### Example cURL
+> ```bash
+>  curl -X POST -H "Content-Type: application/json" --data @put.json http://localhost:8889/api/articles/{id}/comments
+> ```
+</details>
+
 ## Coding style guidelines
 When developing, we follow the guide from the "[Laravel & PHP 'Spatie'][spatie/guidelines]" article.
 

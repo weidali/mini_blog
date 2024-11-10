@@ -52,7 +52,7 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         $article->increment('views');
 
-        Cache::put("article_{$article->id}_views", $article->views, now()->addMinutes(10)); // Кешируем на 10 минут
+        Cache::put("article_{$article->id}_views", $article->views, now()->addMinutes(10));
 
         return response()->json(['views' => $article->views]);
     }
